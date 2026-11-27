@@ -1,0 +1,23 @@
+{
+	"name": "dictator",
+	"version": "1.0.0",
+	"description": "Speech to text",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"dev": "nodemon index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Neha Kumari",
+	"license": "ISC",
+	"dependencies": {
+		"cors": "^2.8.6",
+		"dotenv": "^18.0.10",
+		"express": "^5.3.0",
+		"mongoose": "^9.12.3",
+		"multer": "^2.5.0"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.14"
+	}
+}
