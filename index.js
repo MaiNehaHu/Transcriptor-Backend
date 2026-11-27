@@ -13,6 +13,8 @@ app.use(
 	}),
 );
 
+app.options(/.*/, cors());
+
 app.use(express.json());
 
 app.use(async (req, res, next) => {
@@ -32,8 +34,8 @@ app.use(async (req, res, next) => {
 const scriptRoutes = require("./routes/script");
 const characterRoutes = require("./routes/character");
 
-app.use("/api/scripts", scriptRoutes);
-app.use("/api/characters", characterRoutes);
+app.use("api/scripts", scriptRoutes);
+app.use("api/characters", characterRoutes);
 
 app.use("/", (req, res) => {
 	res.send("Dictator server is running");
