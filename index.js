@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
 	cors({
-		origin: "https://transcriptor-azure.vercel.app/",
+		origin: "https://transcriptor-azure.vercel.app",
 		methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
 		credentials: true,
 	}),
@@ -21,8 +21,11 @@ app.use(async (req, res, next) => {
 
 		next();
 	} catch (error) {
-		console.log(error);
-		process.exit(1);
+		console.log("Database connection failed: ", error);
+
+		return res.status(500).json({
+			message: "Database connection failed",
+		});
 	}
 });
 
