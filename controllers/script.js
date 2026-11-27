@@ -102,7 +102,7 @@ const updateScriptContent = async (req, res) => {
 					message:
 						"Version conflict. The script has been modified by another user. Refresh and try again.",
 					currentVersion: existingScript.version,
-					data: existingScript,
+					// data: existingScript,
 				});
 			}
 		}
@@ -181,7 +181,7 @@ const updateScriptTitle = async (req, res) => {
 					message:
 						"Version conflict. The script has been modified by another user. Refresh and try again.",
 					currentVersion: existingScript.version,
-					data: existingScript,
+					// data: existingScript,
 				});
 			}
 
