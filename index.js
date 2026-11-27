@@ -5,7 +5,14 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+app.use(
+	cors({
+		origin: "https://transcriptor-azure.vercel.app/",
+		methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+		credentials: true,
+	}),
+);
+
 app.use(express.json());
 
 app.use(async (req, res, next) => {

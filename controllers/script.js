@@ -82,7 +82,7 @@ const updateScriptContent = async (req, res) => {
 		}
 
 		const script = await Script.findOneAndUpdate(
-			{ _id: scriptId },
+			{ _id: scriptId, version: expectedVersion },
 			{
 				$set: { content: content },
 				$inc: { version: 1 },
@@ -197,7 +197,7 @@ const updateScriptTitle = async (req, res) => {
 			}
 
 			return res
-				.status(400)
+				.status(409)
 				.json({ message: "Script is not locked by this client" });
 		}
 
