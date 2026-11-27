@@ -170,6 +170,7 @@ const editCharacter = async (req, res) => {
 
 		return res.status(200).json({
 			message: "Character updated successfully!!",
+			data: character,
 		});
 	} catch (error) {
 		console.log(error);
