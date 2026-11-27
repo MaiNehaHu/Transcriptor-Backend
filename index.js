@@ -1,7 +1,3 @@
-// express
-
-// models -> script, character
-// character belongs to a script.
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
@@ -12,7 +8,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 8000;
+app.use(async (req, res, next) => {
+	try {
+		await connectDB();
+
+		next();
+	} catch (error) {
+		console.log(error);
+		process.exit(1);
+	}
+});
 
 const scriptRoutes = require("./routes/script");
 const characterRoutes = require("./routes/character");
@@ -24,17 +29,12 @@ app.use("/", (req, res) => {
 	res.send("Dictator server is running");
 });
 
-const startServer = async (req, res) => {
-	try {
-		await connectDB();
+if (require.main === module) {
+	const PORT = process.env.PORT || 8000;
 
-		app.listen(PORT, () => {
-			console.log(`Server is running on port ${PORT}`);
-		});
-	} catch (error) {
-		console.log(error);
-		process.exit(1);
-	}
-};
+	app.listen(PORT, () => {
+		console.log(`Server is runnning on port ${PORT}`);
+	});
+}
 
-startServer();
+module.exports = app;
