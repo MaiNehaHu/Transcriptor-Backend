@@ -1,5 +1,5 @@
-const Script = require("../models/Script");
-const Character = require("../models/Character");
+const Script = require("../models/script.js");
+const Character = require("../models/character");
 const mongoose = require("mongoose");
 
 const getCharactersOfScript = async (req, res) => {

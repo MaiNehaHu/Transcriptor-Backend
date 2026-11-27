@@ -1,4 +1,4 @@
-const Script = require("../models/Script");
+const Script = require("../models/script.js");
 const mongoose = require("mongoose");
 
 const createScript = async (req, res) => {
